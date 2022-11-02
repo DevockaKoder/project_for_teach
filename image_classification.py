@@ -41,6 +41,11 @@ def load_image():
 
 model = load_model()
 
+def print_predictions(preds):
+    classes = decode_predictions(preds, top=3)[0]
+    for cl in classes:
+        st.write(str(cl[1]).replace('_'," "), cl[2])
+
 st.title('Классификация изображений с переводом на разные языки')
 img = load_image()
 result = st.button('Распознать изображение')
