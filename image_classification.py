@@ -46,7 +46,7 @@ def print_predictions(preds):
     for cl in classes:
         st.write(str(cl[1]).replace('_'," "), cl[2])
 
-st.title('Классификация изображений с переводом на разные языки')
+st.title('Распознавание изображений')
 img = load_image()
 result = st.button('Распознать изображение')
 if result:
