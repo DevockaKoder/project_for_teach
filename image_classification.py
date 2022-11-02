@@ -39,23 +39,6 @@ def load_image():
     else:
         return None
 
-
-def print_predictions(preds):
-    classes = decode_predictions(preds, top=3)[0]
-    for cl in classes:
-        st.write(str(cl[1]).replace('_'," "), cl[2])
-        #trans_ru = translate({"inputs": str(cl[1]).replace('_'," "),}, API_URL_ru)
-        #for tt in trans_ru():
-        #     st.write(str(tt['translation_text']))
-        en_text=str(cl[1]).replace('_'," ")
-        trans_ta = translate({"inputs": [">>rus<< "+en_text, ">>tat<< "+en_text,],}, API_URL_ta)
-        tr_test=tuple(trans_ta())
-        "Русский:       "+tr_test[0]['translation_text']
-        "Татарский:     "+tr_test[1]['translation_text']
-        #for tt in tuple(trans_ta):
-        #    (str(tt['translation_text']))
-
-
 model = load_model()
 
 st.title('Классификация изображений с переводом на разные языки')
